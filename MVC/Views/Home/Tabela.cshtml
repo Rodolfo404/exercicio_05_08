@@ -18,12 +18,16 @@
         <tbody>
             @foreach (var pudim in Model)
             {
-            <tr>
-                <th>@pudim.Id</th>
-                <th>@pudim.Nome</th>
-                <th>@pudim.Modelo</th>
-                <th>@pudim.Marca</th>
-            </tr>
+                <tr>
+                    <th>@pudim.Id</th>
+                    <th>@pudim.Nome</th>
+                    <th>@pudim.Modelo</th>
+                    <th>@pudim.Marca</th>
+                    <td>
+                        <a href="/Home/Editar/@pudim.Id">Editar</a> |
+                        <a href="/Home/Deletar/@pudim.Id">Excluir</a>
+                    </td>
+                </tr>
 
             }
         </tbody>

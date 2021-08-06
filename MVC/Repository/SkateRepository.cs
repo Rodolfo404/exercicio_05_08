@@ -20,10 +20,29 @@ namespace MVC
         {
             repositorio.Add(model);
         }
-        public List<Skate> Tabela()
+        public List<Skate> Read()
         {
             return repositorio;
         }
+        public Skate Read(int id)
+        {
+            return repositorio.Find(s => s.Id == id);
+        }
 
+        public void Delete(int id)
+        {
+            Skate model = Read(id);
+            if (model != null)
+            {
+                repositorio.Remove(model);
+
+            }
+        }
+
+        public void Editar(Skate model)
+        {
+            int index = repositorio.FindIndex(s => s.Id == model.Id);
+            repositorio[index] = model;
+        }
     }
 }

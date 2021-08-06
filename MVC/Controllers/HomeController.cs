@@ -15,26 +15,45 @@ namespace MVC.Controllers
         {
             return View();
         }
-
-        public ActionResult Tabela()
-        
-        {
-            List<Skate> model = repository.Tabela();
-            return View(model);
-                      
-        }
-
         public ActionResult Cadastro()
         {
 
             return View();
         }
 
+        public ActionResult Tabela()
+        
+        {
+            List<Skate> model = repository.Read();
+            return View(model);
+                      
+        }
+
+
         [HttpPost]
         public ActionResult Salvar(Skate model)
         {
             repository.Salvar(model);
             return View();
+        }
+
+        public ActionResult Deletar(int id)
+        {
+            repository.Delete(id);
+            return RedirectToAction("Tabela");
+        }
+
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            Skate model = repository.Read(id);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Editar(Skate model)
+        {
+            repository.Editar(model);
+            return RedirectToAction("Tabela");
         }
     }
 }
